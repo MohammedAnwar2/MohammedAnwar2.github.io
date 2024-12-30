@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="personal_portfolio">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <title>personal_portfolio</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Lottie Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.0/lottie.min.js"></script>
+  
+  <style>
+    /* Style the container to cover the entire screen */
+    .container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Make the Lottie animation really big and responsive */
+    .indicator {
+      width: 50vmax; /* 50% of the viewport size */
+      height: 50vmax; /* 50% of the viewport size */
+      max-width: 100%; /* Ensures it won't exceed the screen width */
+      max-height: 100%; /* Ensures it won't exceed the screen height */
+    }
+  </style>
+</head>
+
+<body style="overflow: hidden">
+  <!-- Container for Lottie animation -->
+  <div id="loading_indicator" class="container">
+    <div id="lottie"></div> <!-- Lottie animation will be rendered here -->
+  </div>
+  <script src="flutter_bootstrap.js"></script>
+  <script>
+    flutterReady = () => {
+      var animation = lottie.loadAnimation({
+        container: document.getElementById('lottie'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: './assets/custom_loading.json'
+      });
+    };
+  </script>
+  <script>
+    window.addEventListener("load", flutterReady);
+  </script>
+  
+  <script src="flutter_bootstrap.js" async>
+       window.onload = setTimeout(() => {
+      const loadingIndicator = document.getElementById('loading_indicator');
+      loadingIndicator.remove(); // Remove the entire container from the DOM
+    }, 10000); 
+  </script>
+</body>
+</html>
